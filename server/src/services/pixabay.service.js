@@ -62,8 +62,8 @@ class PixabayService {
       return {
         success: true,
         data: sortedData, // מערך התמונות
-        total: response.data.total, // סה"כ תוצאות
-        totalPages: Math.ceil(response.data.total / 9) // חישוב מספר עמודים
+        total: response.data.totalHits, // סה"כ תוצאות
+        totalPages: Math.ceil((response.data.total || 10000) / 9) 
       };
 
     } catch (error) {

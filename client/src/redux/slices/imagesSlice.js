@@ -89,7 +89,7 @@ const imagesSlice = createSlice({
   .addCase(getImages.fulfilled, (state, action) => {
   state.loading = false;
   state.images = action.payload.data || [];
-  state.totalPages = action.payload.totalPages || 1;
+  state.totalPages = action.payload.pagination?.totalPages || 1;
   
   console.log('✅ Redux updated:', {
     images: state.images.length,
