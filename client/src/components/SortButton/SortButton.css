@@ -1,0 +1,46 @@
+/**
+ * ========================================
+ * SortButton Styles - עיצוב כפתור מיון
+ * ========================================
+ */
+
+/* כפתור מיון */
+.sort-button {
+  padding: 10px 20px;               /* רווח פנימי */
+  background: white;                /* רקע לבן */
+  color: #667eea;                   /* טקסט סגול */
+  border: 2px solid white;          /* גבול לבן */
+  border-radius: 8px;               /* פינות מעוגלות */
+  font-size: 16px;                  /* גודל טקסט */
+  font-weight: 600;                 /* משקל מודגש */
+  cursor: pointer;                  /* סמן יד */
+  transition: all 0.3s ease;        /* אנימציה חלקה */
+  margin-left: 15px;                /* רווח משמאל */
+}
+
+/* אפקט hover */
+.sort-button:hover {
+  background: rgba(255, 255, 255, 0.9);  /* רקע קצת שקוף */
+  transform: translateY(-2px);            /* הרמה קלה */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* צל */
+}
+
+/* אפקט לחיצה */
+.sort-button:active {
+  transform: translateY(0);         /* חזרה למקום */
+}
+
+/* Focus לנגישות */
+.sort-button:focus {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .sort-button {
+    margin-left: 0;                 /* אפס margin בטלפון */
+    width: 100%;                    /* רוחב מלא */
+    max-width: 200px;               /* רוחב מקסימלי */
+  }
+}

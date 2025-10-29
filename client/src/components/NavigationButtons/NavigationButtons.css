@@ -1,0 +1,173 @@
+/**
+ * ========================================
+ * NavigationButtons Styles - עיצוב כפתורי ניווט
+ * ========================================
+ */
+
+/* 
+ * ==================== 
+ * Container - מעטפת הכפתורים
+ * ==================== 
+ * 
+ * תפקיד:
+ * - מסדר את 2 הכפתורים והמידע באמצע
+ * - Prev שמאלה, Next ימינה, Page Info באמצע
+ * 
+ * למה Flexbox?
+ * - מושלם לפריסה חד-ממדית (שורה אחת)
+ * - space-between מפזר אוטומטית
+ * - responsive טבעי
+ */
+.navigation-buttons {
+  display: flex;                    /* Flexbox לפריסה */
+  justify-content: space-between;   /* Prev שמאל, Next ימין, Space באמצע */
+  align-items: center;              /* ריכוז אנכי */
+  padding: 20px;                    /* רווח פנימי */
+  max-width: 1200px;                /* רוחב מקסימלי */
+  margin: 0 auto;                   /* ריכוז אופקי */
+  gap: 20px;                        /* רווח בין אלמנטים */
+}
+
+/* 
+ * ==================== 
+ * Button Base Styles - עיצוב בסיסי לכפתורים
+ * ==================== 
+ * 
+ * תפקיד:
+ * - עיצוב משותף לשני הכפתורים
+ * - כחול, מעוגל, עם אנימציה
+ */
+.nav-button {
+  padding: 12px 24px;               /* רווח פנימי */
+  font-size: 16px;                  /* גודל טקסט */
+  font-weight: 600;                 /* משקל מודגש */
+  border: 2px solid #3498db;        /* גבול כחול */
+  background-color: #3498db;        /* רקע כחול */
+  color: white;                     /* טקסט לבן */
+  border-radius: 8px;               /* פינות מעוגלות */
+  cursor: pointer;                  /* סמן יד ב-hover */
+  transition: all 0.3s ease;        /* אנימציה חלקה */
+  min-width: 100px;                 /* רוחב מינימלי */
+}
+
+/* 
+ * ==================== 
+ * Hover Effect - אפקט ריחוף
+ * ==================== 
+ * 
+ * מה קורה?
+ * - כשמעבירים עכבר מעל הכפתור
+ * - הכפתור נהיה כהה יותר
+ * - "עולה" מעט (translateY)
+ * - מופיעה צל
+ * 
+ * למה :not(:disabled)?
+ * - האפקט לא יקרה אם הכפתור disabled
+ * - disabled = אפור ולא זזים
+ */
+.nav-button:hover:not(:disabled) {
+  background-color: #2980b9;        /* כחול כהה יותר */
+  border-color: #2980b9;            /* גבול כהה */
+  transform: translateY(-2px);      /* "הרמה" של 2px */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* צל */
+}
+
+/* 
+ * ==================== 
+ * Active (Click) Effect - אפקט לחיצה
+ * ==================== 
+ * 
+ * מה קורה?
+ * - ברגע הלחיצה
+ * - הכפתור "יורד" חזרה (מבטל את translateY)
+ * - נותן תחושת "לחיצה"
+ */
+.nav-button:active:not(:disabled) {
+  transform: translateY(0);         /* חזרה למצב רגיל */
+}
+
+/* 
+ * ==================== 
+ * Disabled State - מצב מושבת
+ * ==================== 
+ * 
+ * מתי זה קורה?
+ * - Prev כש-currentPage === 1
+ * - Next כש-currentPage === totalPages
+ * 
+ * מה משתנה?
+ * - רקע ו-border אפורים
+ * - cursor: not-allowed (סמן "אסור")
+ * - opacity נמוכה (נראה "מכובה")
+ */
+.nav-button:disabled {
+  background-color: #ccc;           /* אפור */
+  border-color: #ccc;               /* גבול אפור */
+  cursor: not-allowed;              /* סמן "אסור" */
+  opacity: 0.6;                     /* שקיפות */
+}
+
+/* 
+ * ==================== 
+ * Focus - ניווט מקלדת
+ * ==================== 
+ * 
+ * למה זה חשוב?
+ * - accessibility
+ * - משתמשים עם מקלדת צריכים לראות איפה הם
+ * 
+ * מה קורה?
+ * - כשמגיעים לכפתור עם Tab
+ * - מופיע outline כחול
+ */
+.nav-button:focus {
+  outline: 3px solid #3498db;       /* outline כחול */
+  outline-offset: 2px;              /* מרחק מהכפתור */
+}
+
+/* 
+ * ==================== 
+ * Page Info - מידע על עמוד
+ * ==================== 
+ * 
+ * תפקיד:
+ * - "Page 5 of 1,000"
+ * - נמצא באמצע בין הכפתורים
+ */
+.page-info {
+  font-size: 16px;                  /* גודל טקסט */
+  font-weight: 500;                 /* משקל בינוני */
+  color: #333;                      /* אפור כהה */
+  text-align: center;               /* ריכוז טקסט */
+  flex: 1;                          /* תופס מקום גמיש */
+}
+
+/* 
+ * ==================== 
+ * Responsive: Mobile
+ * ==================== 
+ * 
+ * מתי זה פועל?
+ * - מסכים עד 480px
+ * 
+ * מה משתנה?
+ * - כפתורים קטנים יותר
+ * - טקסט קטן יותר
+ * - padding קטן יותר
+ */
+@media (max-width: 480px) {
+  .navigation-buttons {
+    padding: 15px 10px;             /* padding קטן */
+    gap: 10px;                      /* רווח קטן */
+  }
+
+  .nav-button {
+    padding: 10px 16px;             /* padding קטן */
+    font-size: 14px;                /* טקסט קטן */
+    min-width: 80px;                /* רוחב מינימלי קטן */
+  }
+
+  .page-info {
+    font-size: 14px;                /* טקסט קטן */
+  }
+}

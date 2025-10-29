@@ -1,0 +1,44 @@
+/**
+ * ========================================
+ * LoadingSpinner Styles - עיצוב קומפוננטת הטעינה
+ * ========================================
+ */
+
+.loading-spinner-container {
+  display: flex;                    /* Flexbox לריכוז */
+  flex-direction: column;           /* סידור אנכי (ספינר + טקסט) */
+  align-items: center;              /* ריכוז אופקי */
+  justify-content: center;          /* ריכוז אנכי */
+  padding: 60px 20px;               /* ריווח פנימי */
+  min-height: 400px;                /* גובה מינימלי - מונע "קפיצות" */
+}
+
+
+.loading-spinner {
+  width: 50px;                      /* רוחב */
+  height: 50px;                     /* גובה */
+  border: 4px solid #f3f3f3;        /* border אפור בהיר - הרקע */
+  border-top: 4px solid #3498db;    /* border כחול - החלק שנראה מסתובב */
+  border-radius: 50%;               /* הופך ל-עיגול */
+  animation: spin 1s linear infinite; /* אנימציה: spin, 1 שנייה, קבוע, אינסופי */
+}
+
+/* הגדרת האנימציה לסיבוב */
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg);        /* התחלה: 0 מעלות */
+  }
+  100% { 
+    transform: rotate(360deg);      /* סוף: 360 מעלות (סיבוב מלא) */
+  }
+}
+
+/* 
+ * טקסט "Loading images..."
+ */
+.loading-text {
+  margin-top: 20px;                 /* רווח מהספינר */
+  color: #666;                      /* אפור כהה - לא מטריד לעין */
+  font-size: 16px;                  /* גודל קריא */
+  font-weight: 500;                 /* משקל בינוני */
+}
